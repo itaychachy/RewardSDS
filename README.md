@@ -7,11 +7,11 @@
 
 ___
 
-> **TL;DR:**
->  introducing **RewardSDS**, a novel approach that weights noise samples based on alignment scores from a reward model, producing a weighted SDS loss that prioritizes gradients from noise samples that yield aligned high-reward output.
+**TL;DR:**  
+Introducing **RewardSDS**, a novel approach that weights noise samples based on alignment scores from a reward model, producing a weighted SDS loss that prioritizes gradients from noise samples that yield aligned high-reward output.
 ___
 
-## Experimenting with RewardSDS
+# Experimenting with RewardSDS
 
 ### Prerequisites
  This project has been tested with `Python 3.8`, `CUDA 11.8`, and `GPU L40S`.
@@ -23,7 +23,7 @@ We provide our code for text-based NeRF optimization (with MVDream as the 2D pri
 ```bash
 # Update path according to your threestudio installation
 cp -r threestudio-reward-sds ../threestudio/custom/
-cd ../threestudio
+cd ../threestudio/custom/threestudio-reward-sds
 
 # First install xformers (https://github.com/facebookresearch/xformers#installing-xformers)
 # cuda 11.8 version
@@ -40,10 +40,10 @@ In the `threestudio` repo:
 ```bash
 python launch.py --config custom/threestudio-reward-sds/configs/reward-mvdream-sd21.yaml --train --gpu 0 system.prompt_processor.prompt="A penguin with a brown bag in the snow"
 ```
-Checkout the [README](threestudio-reward-sds/README.md) for configuration details. In additional other optimization details (shading, resume from checkpoints, etc.) can be found in [MVDream](https://github.com/DSaurus/threestudio-mvdream/tree/main).
+Checkout the [README](threestudio-reward-sds/README.md) for configuration details. In addition, other optimization details (shading, resume from checkpoints, etc.) can be found in the [MVDream](https://github.com/DSaurus/threestudio-mvdream/tree/main) repo.
 
 ## 2D Experiments
-We offer a simpler installation than Threestudio with minimal dependencies if you just want to run experiments in 2D.
+We offer a simpler installation than Threestudio with minimal dependencies if you want to run experiments in 2D.
 
 ### Installation
 ```bash
@@ -64,13 +64,10 @@ In the `2D_experiments` directory:
 python generate.py --prompt "A white car and a red sheep"
 ```
 
-See `generate.py` for more options, including but not limited to:
-* `--reward_strategy`, `reward_model`, `n_noises` Reward related fields, details in [README](README.md)
-* `--prompt` Text prompt for the generated image
-* `--mode` Choose between SDS-like loss functions [SDS](https://dreamfusion3d.github.io),  [VSD](https://ml.cs.tsinghua.edu.cn/prolificdreamer/), [sds-bridge](https://sds-bridge.github.io/)
-* `--seed` Random seed
-* `--lr` Learning rate
-* `--cfg_scale` Scale of classifier-free guidance computation
+See [`generate.py`](2D_experiments/generate.py) for more options, including but not limited to:
+* `--reward_strategy`, `reward_model`, `n_noises` - reward related fields, details in [README](README.md).
+* `--prompt` - text prompt for the generated image.
+* `--mode` - choose between SDS-like loss functions [SDS](https://dreamfusion3d.github.io),  [VSD](https://ml.cs.tsinghua.edu.cn/prolificdreamer/), [sds-bridge](https://sds-bridge.github.io/).
 
 ## Evaluation
 You may find the evaluation scripts useful for reproducing the results in the paper. They are available in the [`evaluation`](evaluation) directory (follow the TODOs in each script).
