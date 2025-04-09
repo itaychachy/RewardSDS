@@ -14,7 +14,7 @@ ___
 # Experimenting with RewardSDS
 
 ### Prerequisites
- This project has been tested with `Python 3.8`, `CUDA 11.8`, and `GPU L40S`.
+This project has been tested with `Python 3.8`, `CUDA 11.8`, and an `L40S GPU`.
 
 ## 3D Experiments
 We provide our code for text-based NeRF optimization (with MVDream as the 2D prior) as an extension for Threestudio. To use it, please install [threestudio](https://github.com/threestudio-project/threestudio) first and then follow the following steps:
