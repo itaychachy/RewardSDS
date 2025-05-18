@@ -56,6 +56,7 @@ def _parse_args():
     default_cfg_scale = 100 if mode == "sds" else 7.5 if mode == "vsd" else 40  # sds-bridge
     parser.add_argument("--cfg_scale", type=float, default=default_cfg_scale)
     parser.add_argument("--method", type=float, default=default_cfg_scale)
+    parser.add_argument("--save_dir", type=str, default="results")
     args = parser.parse_args()
     return args
 
@@ -95,7 +96,10 @@ def run():
         im = torch.randn((1, 4, 64, 64), device=guidance.unet.device)
 
     # You may want to change the `save_dir` and include information about reward model and the number of noises
-    save_dir = "results/%s_gen/%s_reward_strategy/%s" % (
+    base_dir = os.path.dirname(os.path.abspath(__file__))  # location of the script
+    results_root = os.path.join(base_dir, args.save_dir)
+    save_dir = "%s/%s_gen/%s_reward_strategy/%s" % (
+        results_root,
         _arg_to_directory(args.mode),
         _arg_to_directory(args.reward_strategy),
         _arg_to_directory(args.prompt)
