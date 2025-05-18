@@ -8,5 +8,5 @@ jaxtyping
 tqdm
 numpy
 imageio[pyav]
-# To use the ImageReward as a reward model, install it from the following link:
-git+https://github.com/itaychachy/tensor_image_reward.git@main#egg=TensorImageReward
+# To use ImageReward as a reward model
+git+https://github.com/THUDM/ImageReward.git@main#egg=image-reward

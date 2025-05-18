@@ -1,5 +1,5 @@
 # MVDream
 open-clip-torch>=2.7.0
 git+https://github.com/DSaurus/MVDream.git
-# ImageReward as reward model
-git+https://github.com/itaychachy/tensor_image_reward.git@main#egg=TensorImageReward
+# To use ImageReward as a reward model
+git+https://github.com/THUDM/ImageReward.git@main#egg=image-reward

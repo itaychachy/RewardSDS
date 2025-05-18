@@ -15,14 +15,14 @@ class RewardModel(ABC):
 
 class ImageReward(RewardModel):
     def __init__(self, device=torch.device("cuda"), model="ImageReward-v1.0"):
-        import TensorImageReward as IR
+        import ImageReward as IR
         self.reward = IR.load(model)
         self.device = device
         self.reward.requires_grad_(False)
 
     def compute_scores(self, images, prompt):
-        images = F.interpolate(images, (224, 224), mode='bilinear', align_corners=False).to(torch.float32)
-        return self.reward.inference_rank(prompt, images)[1]
+        pil_images = [img if isinstance(img, Image.Image) else to_pil_image(img.cpu()) for img in images]
+        return self.reward.score(prompt, pil_images)
 
 
 class AestheticReward(RewardModel):
