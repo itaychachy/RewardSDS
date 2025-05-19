@@ -13,10 +13,10 @@ class RewardModel(ABC):
     def compute_scores(self, images, prompt):
         pass
 
-class ImageReward(RewardModel):
+class ImageRewardModel(RewardModel):
     def __init__(self, device=torch.device("cuda"), model="ImageReward-v1.0"):
-        import ImageReward as IR
-        self.reward = IR.load(model)
+        import ImageReward
+        self.reward = ImageReward.load(model)
         self.device = device
         self.reward.requires_grad_(False)
 
@@ -25,7 +25,7 @@ class ImageReward(RewardModel):
         return self.reward.score(prompt, pil_images)
 
 
-class AestheticReward(RewardModel):
+class AestheticRewardModel(RewardModel):
     def __init__(
         self,
         device=torch.device("cuda"),

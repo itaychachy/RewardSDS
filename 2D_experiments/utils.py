@@ -9,7 +9,7 @@ from reward_strategy import (
     BestRewardStrategy,
     WeightedRewardStrategy
 )
-from reward_model import ImageReward, AestheticReward
+from reward_model import ImageRewardModel, AestheticRewardModel
 
 
 def cleanup():
@@ -47,9 +47,9 @@ def create_reward_strategy(strategy, n_noises):
 
 def create_reward_model(model):
     if model == 'image-reward':
-        return ImageReward()
+        return ImageRewardModel()
     elif model == 'aesthetic':
-        return AestheticReward()
+        return AestheticRewardModel()
     elif model == 'none':
         return None
     raise ValueError(f"Unknown reward model: {model}")

@@ -4,7 +4,7 @@ from .reward_strategy import (
     BestRewardStrategy,
     WeightedRewardStrategy
 )
-from .reward_model import ImageReward, AestheticReward
+from .reward_model import ImageRewardModel, AestheticRewardModel
 
 
 def config_to_reward_strategy(cfg):
@@ -23,9 +23,9 @@ def config_to_reward_strategy(cfg):
 def config_to_reward_model(cfg):
     model = cfg.reward_model
     if model == 'image-reward':
-        return ImageReward()
+        return ImageRewardModel()
     elif model == 'aesthetic':
-        return AestheticReward()
+        return AestheticRewardModel()
     elif model == 'none': # No reward
         return None
     raise ValueError(f"Unknown reward model: {model}")
