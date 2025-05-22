@@ -65,7 +65,7 @@ python generate.py --prompt "A white car and a red sheep"
 ```
 
 See [`generate.py`](2D_experiments/generate.py) for more options, including but not limited to:
-* `--reward_strategy`, `reward_model`, `n_noises` - reward related fields, details in [README](README.md).
+* `--reward_strategy`, `reward_model`, `n_noises` - reward related fields, details in [README](2D_experiments/README.md).
 * `--prompt` - text prompt for the generated image.
 * `--mode` - choose between SDS-like loss functions [SDS](https://dreamfusion3d.github.io),  [VSD](https://ml.cs.tsinghua.edu.cn/prolificdreamer/), [sds-bridge](https://sds-bridge.github.io/).
 
