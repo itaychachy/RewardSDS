@@ -63,9 +63,6 @@ class BestRewardStrategy(RewardStrategy):
         k_best = torch.topk(rewards, k=self.config.n_best, largest=True)[1]
         return losses[k_best].mean(), grads[k_best].mean()
 
-    def _get_min_max(self, rewards):
-        return torch.topk(rewards, k=self.config.n_best, largest=True)[1]
-
 class WeightedRewardStrategy(RewardStrategy):
     def __init__(self, n_noises: int):
         super().__init__(n_noises)
